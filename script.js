@@ -55,20 +55,65 @@ let team = [
 ]
 
 
+/*
+
+const listEl = document.getElementById('list');
+
+
 for(let i = 0; i < team.length; i++) {
-
-    console.log('nome: ' + team[i].name);
-    console.log('cognome: ' + team[i].position);
-    console.log('foto: ' + team[i].image);
-
-
-    
-    const listEl = document.getElementById('list');
     
     const newElement = document.createElement('li')
     listEl.append(newElement);
 
-    newElement.innerText = (team[i]);
+    let teamUser = team[i]; 
+
+    for(let key in teamUser) {
+        
+        console.log(key + ':' + teamUser[key]);
+        
+        newElement.innerHTML += `${key}: ${teamUser[key]}`;
+        
+    }
+    
+}
+
+*/
+
+
+const cardContainerEl = document.getElementById('card-container');
+
+for(let i = 0; i < team.length; i++) {
+
+    // creo elemento <li> e lo appendo alla lista
+    let newCardEl = document.createElement('div');
+    newCardEl.classList.add('card');
+    cardContainerEl.append(newCardEl);
+
+    // creo variabile del membro del team corrente
+    let teamMember = team[i];
+
+
+
+    // creo l'elemento del nome
+    let nameEl = document.createElement('div');
+    nameEl.classList.add('name');
+    nameEl.innerText = teamMember.name;
+
+    // creo l'elemento della posizione lavorativa
+    let positionEl = document.createElement('div');
+    positionEl.classList.add('position');
+    positionEl.innerText = teamMember.position;
+
+    let imageEl = document.createElement('img');
+    imageEl.classList.add('image');
+    imageEl.src = 'img/' + teamMember.image;
+
+
+
+    // appendo gli elementi
+    newCardEl.append(imageEl);
+    newCardEl.append(nameEl);
+    newCardEl.append(positionEl);
 }
 
 
